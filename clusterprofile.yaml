@@ -1,0 +1,28 @@
+apiVersion: config.projectsveltos.io/v1beta1
+kind: ClusterProfile
+metadata:
+  name: deploy-altcha
+spec:
+  clusterSelector:
+    matchLabels:
+      env: "base" # apply to all clusters with env=base
+  syncMode: ContinuousWithDriftDetection
+  helmCharts:
+  - repositoryURL: https://altcha-org.github.io/helm-charts
+    repositoryName: sentinel
+    chartName: sentinel/sentinel
+    chartVersion: "0.3.0"
+    releaseName: sentinel
+    releaseNamespace: sentinel
+    helmChartAction: Install
+    values: |
+      replicaCount: 1
+
+      service:
+        type: ClusterIP
+        port: 80
+
+      ingress:
+        enabled: false
+
+      resources: {}

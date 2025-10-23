@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: altcha-staging-version
+  namespace: default
+data:
+  chartVersion: "0.10.2"

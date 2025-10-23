@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: altcha-base-values
+  namespace: default
+data:
+  values.yaml: |
+    # Minimal Altcha values
+    replicaCount: 1
+
+    # Service definition (will expose HTTP)
+    service:
+      type: ClusterIP
+      port: 80
+
+    # Optional ingress (disabled by default; enable if you want to test via Ingress)
+    ingress:
+      enabled: false
+
+    # Default resources (kept minimal)
+    resources: {}
